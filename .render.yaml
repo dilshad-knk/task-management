@@ -2,7 +2,7 @@ services:
   - type: web
     name: backend
     env: node
-    buildCommand: npm run build:backend
-    startCommand: npm run start:backend
+    buildCommand: npm run build
+    startCommand: npm run start
     rootDir: backend
     nodeVersion: 16
