@@ -15,7 +15,7 @@ export const verify = (req:Request1,res:Response,next:NextFunction) => {
    
     
   
-    jwt.verify(token,process.env.JWT_SECRET as string,(err,decode) => {
+    jwt.verify(token,process.env.JWT_SECRET as string,(err:any,decode:any) => {
         if (err){
             return  res.status(401).json({
                 success : false,

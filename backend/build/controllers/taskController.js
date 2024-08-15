@@ -23,28 +23,28 @@ const getTasks = async (req, res) => {
 exports.getTasks = getTasks;
 const createTask = async (req, res) => {
     try {
-        const userId = '66b4302f8b7598d6d2add83e';
+        const userid = '66b4302f8b7598d6d2add83e';
         const { title, description, priority, deadline, status } = req.body;
-        const user = await User_1.default.findById(userId);
-        console.log(userId);
+        const user = await User_1.default.findById(userid);
+        console.log(userid);
         console.log(user);
         if (!user)
-            return res.status(404).json({ error: 'User not found' });
+            return res.status(404).json({ error: 'user not found' });
         const task = new Task_1.default({
-            user: userId,
+            user: userid,
             title,
             description,
             priority,
             deadline,
             status,
         });
-        const savedTask = await task.save();
-        user.tasks.push(savedTask._id);
+        const savedtask = await task.save();
+        user.tasks.push(savedtask._id);
         await user.save();
         res.status(201).json({ message: 'task created successfully' });
     }
     catch (error) {
-        return res.status(500).json({ error: "Error creatin task" });
+        return res.status(500).json({ error: "error creatin task" });
         console.log(error);
     }
 };
