@@ -4,7 +4,7 @@ import instance from '../axios/axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [email, setEmail] = useState('dilshad@gmail.com');
+  const [email, setEmail] = useState('dilshad@gmai.com');
   const [password, setPassword] = useState('1234');
   const [error, setError] = useState('');
 
@@ -42,7 +42,7 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
-            <input type="email" id="email"  className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your email" value={email || 'dilshad@gmail.com'} onChange={(e) => setEmail(e.target.value)} required />
+            <input type="email" id="email"  className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter your email" value={email || 'dilshad@gmai.com'} onChange={(e) => setEmail(e.target.value)} required />
           </div>
           <div className="mb-4">
             <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">Password</label>
