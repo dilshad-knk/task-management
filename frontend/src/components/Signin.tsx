@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await instance.post('/login', {
+      const response = await instance.post('/api/v1/login', {
         email,
         password
       });

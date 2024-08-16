@@ -59,12 +59,13 @@ export const login = async (req:Request,res:Response)=>{
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
 
 
+    
         res.cookie('token',token)
 
         const { password: _, ...userObject } = user.toObject();
       
 
-        res.status(200).json({message : 'access granted',user: userObject });
+        res.status(200).json({message : 'access granted',user: userObject ,token});
         
     } catch (error) {
         console.log(error);

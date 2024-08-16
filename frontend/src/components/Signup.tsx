@@ -25,13 +25,13 @@ const SignUp = () => {
     }
 
     try {
-      const response = await instance.post('/register', {
+      const response = await instance.post('/api/v1/register', {
         email,
         password
       });
 
       navigate('/login')
-      console.log('User signed up:', response.data);
+      console.log('User signed up:', response.data.message);
       setError('');
     } catch (err) {
       setError('Sign up failed');

@@ -9,8 +9,7 @@ export interface Request1 extends Request {
 
 export const verify = (req:Request1,res:Response,next:NextFunction) => {
 
-    const { token } = req.cookies;
-   
+    const token = req.cookies?.token;
 
    
     
