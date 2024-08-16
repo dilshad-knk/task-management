@@ -28,7 +28,7 @@ export function TaskList({ tasks }: TaskListProps) {
     const updateTask = async (updatedTask:Task) => {
         try {
 
-            const response =  await instance.put(`/api/v1/tasks/${updatedTask._id}`,updatedTask)
+             await instance.put(`/api/v1/tasks/${updatedTask._id}`,updatedTask)
             fetchBoard()
            
         } catch (error) {
@@ -39,7 +39,7 @@ export function TaskList({ tasks }: TaskListProps) {
   const deleteTask = async (task : any) => {
         try {
 
-            const response =  await instance.delete(`/api/v1/tasks/${task._id}`)
+             await instance.delete(`/api/v1/tasks/${task._id}`)
             fetchBoard()
            
         } catch (error) {

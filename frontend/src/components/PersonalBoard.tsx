@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import instance from "../axios/axios";
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { Column } from "./Column";
 import { useBoardState } from "../utils/BoardUtils";
 import Create from "./Create";

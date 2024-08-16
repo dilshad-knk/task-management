@@ -22,9 +22,9 @@ const Create: React.FC<props> = ({ toggleModalCreate }) => {
     toggleModalCreate();
   };
 
-  const createTask = async (newTask) => {
+  const createTask = async (newTask:any) => {
     try {
-      const response = await instance.post(`/api/v1/tasks/create`, newTask);
+      await instance.post(`/api/v1/tasks/create`, newTask);
       fetchBoard();
     } catch (error) {
       console.error("Error creating task:", error);

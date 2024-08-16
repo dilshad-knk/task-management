@@ -1,6 +1,5 @@
 
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import instance from '../axios/axios';
 import { useNavigate } from 'react-router-dom';
 
