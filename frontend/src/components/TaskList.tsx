@@ -6,7 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import instance from "../axios/axios";
 import { useBoardState } from "../utils/BoardUtils";
 import { priorityBg } from "../utils/priorityBg";
-
+import { ImBin2 } from "react-icons/im";
 
 interface TaskListProps {
     tasks: Task[];
@@ -36,6 +36,20 @@ export function TaskList({ tasks }: TaskListProps) {
         }
     }
 
+  const deleteTask = async (task : any) => {
+        try {
+
+            const response =  await instance.delete(`/api/v1/tasks/${task._id}`)
+            fetchBoard()
+           
+        } catch (error) {
+            console.error('Error updating task:', error);
+        }
+    }
+
+
+
+
 
 
 
@@ -57,9 +71,10 @@ export function TaskList({ tasks }: TaskListProps) {
                                 className={`border group my-3 text-sm flex justify-between items-center rounded text-white p-2 ${snapshot.isDragging ? 'bg-zinc-600' : 'bg-indigo-950'}`}
                             >
                                 <div className="text-wrap p-1">{task.title}</div>
-                                <div className="p-1">
+                                <div className="p-1 flex justify-center items-center ">
                                     <span className={`group-hover:hidden ${priorityBg(task.priority)} py-1 px-3`}>{task.priority}</span>
                                     <FaEdit className="hidden group-hover:block text-xl mx-4" onClick={() => toggleModal(task)} />
+                                    < ImBin2 className="hidden group-hover:block" onClick={()=> deleteTask(task)}/>
                                 </div>
                                 {isModalOpen && selectedTask && (
                                     <Edit toggleModal={toggleModal} isModalOpen={isModalOpen} task={selectedTask} updateTask={updateTask} />

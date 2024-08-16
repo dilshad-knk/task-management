@@ -12,6 +12,7 @@ export const verify = (req:Request1,res:Response,next:NextFunction) => {
     const token = req.cookies?.token;
 
    
+    console.log('authorhyytized')
     
   
     jwt.verify(token,process.env.JWT_SECRET as string,(err:any,decode:any) => {
@@ -27,7 +28,6 @@ export const verify = (req:Request1,res:Response,next:NextFunction) => {
          const userId = decode.userId;
 
 
-         console.log(userId);
 
          
          req.userId = userId; 

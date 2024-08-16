@@ -41,7 +41,7 @@ const Create: React.FC<props> = ({ toggleModalCreate }) => {
 
   return (
     <div className="fixed text-black inset-0 flex items-center justify-center bg-slate-900 bg-opacity-90">
-      <div className="p-6 rounded shadow-lg w-3/5 h-5/6 flex flex-col justify-between bg-slate-100">
+      <div className="p-6 rounded shadow-lg w-3/5 h-max-screen h-auto flex flex-col justify-between bg-slate-100">
         <form>
           <div className="pb-5 md:flex justify-center md:gap-5 flex flex-wrap gap-2">
             <button

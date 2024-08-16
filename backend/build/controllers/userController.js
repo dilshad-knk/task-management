@@ -41,7 +41,7 @@ const login = async (req, res) => {
         const token = jsonwebtoken_1.default.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.cookie('token', token);
         const { password: _, ...userObject } = user.toObject();
-        res.status(200).json({ message: 'access granted', user: userObject });
+        res.status(200).json({ message: 'access granted', user: userObject, token });
     }
     catch (error) {
         console.log(error);

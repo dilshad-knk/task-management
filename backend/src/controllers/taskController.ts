@@ -21,7 +21,7 @@ export const getTasks = async (req: Request1, res: Response) => {
     const user = await User.findById(userId).populate('tasks').exec();
    
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('User not hh found');
     }
 
     res.status(200).json({tasks: user.tasks});
@@ -37,19 +37,21 @@ export const getTasks = async (req: Request1, res: Response) => {
 export  const createTask = async (req:Request1,res:Response)=>{
 
   
+console.log('hitted');
+
   
     try {
 
-      const userid = '66b4302f8b7598d6d2add83e'
+        const userId = req.userId
 
-        const{ title, description, priority, deadline, status } = req.body
+        console.log(userId,'idididididididiid');
+
+        const{  title, description, priority, deadline, status } = req.body
 
         
         
        
-        const user = await User.findById(userid);
-        console.log(userid);
-        console.log(user);
+        const user = await User.findById(userId);
 
 
         if (!user) return res.status(404).json({ error: 'user not found' });
@@ -58,7 +60,7 @@ export  const createTask = async (req:Request1,res:Response)=>{
   
         
         const task = new Task({
-          user: userid,
+          user: userId,
           title,
           description,
           priority,
@@ -78,7 +80,7 @@ export  const createTask = async (req:Request1,res:Response)=>{
 
     } catch (error) {
         return res.status(500).json({error: "error creatin task"})
-        console.log(error);
+        
         
     }
 }
@@ -89,7 +91,6 @@ export  const createTask = async (req:Request1,res:Response)=>{
 export const updateTask = async (req:Request1,res:Response) => {
   const { taskId } = req.params;
   const updateData = req.body;
-  console.log(updateData);
   
 
   try {
@@ -110,14 +111,18 @@ export const updateTask = async (req:Request1,res:Response) => {
 
 export const deleteTask = async (req:Request1,res:Response) => {
   const { taskId } = req.params;
-  const { userId } = req.body;
+   const userId = req.userId
 
+  console.log(taskId,'id');
+  console.log(userId,'user');
+   
 
   try {
     const task = await Task.findById(taskId);
     if (!task) return res.status(404).json({ error: 'Task not found' });
+console.log(task.user.toString() );
 
-    if (task.user.toString() !== req.body.userId) {
+    if (task.user.toString() !== userId) {
       return res.status(403).json({ error: 'User does not have permission to delete this task' });
     }
 
