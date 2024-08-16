@@ -12,9 +12,8 @@ interface Task {
 
 
 export const getTasks = async (req: Request1, res: Response) => {
-  // const userId = req.userId
+  const userId = req.userId
 
-  const userId = '66b4302f8b7598d6d2add83e'
   
   
 

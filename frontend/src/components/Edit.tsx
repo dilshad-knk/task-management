@@ -24,7 +24,7 @@ const Edit: React.FC<props> = ({ toggleModal, isModalOpen,task,updateTask }) => 
   
   };
 
-  const updateStatus =(e,status)=>{
+  const updateStatus =(e:any,status:any)=>{
     e.preventDefault()
     setCurrentTask(prev => ({...prev,status}))
 
@@ -68,7 +68,7 @@ const Edit: React.FC<props> = ({ toggleModal, isModalOpen,task,updateTask }) => 
             <select
               id="priority"
               value={currentTask.priority}
-              onChange={(e) => setCurrentTask({ ...currentTask, priority: e.target.value })}
+              onChange={(e:any) => setCurrentTask({ ...currentTask, priority: e.target.value })}
               className="mt-1  w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="urgent">Urgent</option>
