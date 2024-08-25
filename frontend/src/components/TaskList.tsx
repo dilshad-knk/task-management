@@ -70,7 +70,7 @@ export function TaskList({ tasks }: TaskListProps) {
                                 {...provided.dragHandleProps}
                                 className={`border group my-3 text-sm flex justify-between items-center rounded text-white p-2 ${snapshot.isDragging ? 'bg-zinc-600' : 'bg-indigo-950'}`}
                             >
-                                <div className="text-wrap p-1">{task.title}</div>
+                                <div className="whitespace-normal p-1">{task.title}</div>
                                 <div className="p-1 flex justify-center items-center ">
                                     <span className={`group-hover:hidden ${priorityBg(task.priority)} py-1 px-3`}>{task.priority}</span>
                                     <FaEdit className="hidden group-hover:block text-xl mx-4" onClick={() => toggleModal(task)} />
