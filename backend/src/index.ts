@@ -9,8 +9,11 @@ import cookieParser from 'cookie-parser';
 const app: Application = express();
 dotenv.config();
 
+
+connectDb();
+
 app.use(cors({
-    credentials: true,
+    credentials: true ,
     origin: "https://drag-n-plan.vercel.app"
 }));
 
@@ -30,7 +33,6 @@ app.use('/api/v1', taskRoutes);
 
 
 
-connectDb();
 
 
 app.listen(process.env.PORT, () => {
