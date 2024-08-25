@@ -61,7 +61,7 @@ export const login = async (req: Request, res: Response) => {
     const cookieParams: CookieOptions = {
       httpOnly: true,
       secure: true,
-      sameSite: "none",
+      sameSite: "none" as "none",
       path: '/', // Adjust as needed
 
     };
