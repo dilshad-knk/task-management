@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 
 const connectDb = async () => {
     try {
+       
         await mongoose.connect(process.env.DB as string);
         console.log("Db connected");
         

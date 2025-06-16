@@ -41,6 +41,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   try {
+    console.log("hitting server")
     const { email, password } = req.body;
     const user = await User.findOne({ email })
 

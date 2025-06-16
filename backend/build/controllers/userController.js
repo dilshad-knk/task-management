@@ -29,6 +29,7 @@ const createUser = async (req, res) => {
 exports.createUser = createUser;
 const login = async (req, res) => {
     try {
+        console.log("hitting server");
         const { email, password } = req.body;
         const user = await User_1.default.findOne({ email });
         if (!user) {
@@ -39,7 +40,13 @@ const login = async (req, res) => {
             return res.status(401).json({ message: 'Invalid credent' });
         }
         const token = jsonwebtoken_1.default.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.cookie('token', token);
+        const cookieParams = {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: '/', // Adjust as needed
+        };
+        res.cookie('token', token, cookieParams);
         const { password: _, ...userObject } = user.toObject();
         res.status(200).json({ message: 'access granted', user: userObject, token });
     }

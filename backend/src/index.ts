@@ -1,5 +1,7 @@
-import express, { Application } from 'express';
 import dotenv from 'dotenv';
+dotenv.config();
+
+import express, { Application } from 'express';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes';
 import taskRoutes from './routes/taskRoutes';
@@ -7,14 +9,16 @@ import connectDb from './config/db';
 import cookieParser from 'cookie-parser';
 
 const app: Application = express();
-dotenv.config();
+
 
 
 connectDb();
 
+const production = process.env.NODE_ENV == 'production';
+
 app.use(cors({
-    credentials: true ,
-    origin: "https://drag-n-plan.vercel.app"
+  credentials: true,
+  origin: production ? "https://drag-n-plan.vercel.app" :  "http://localhost:5173" 
 }));
 
 
@@ -29,12 +33,9 @@ app.use('/api/v1', taskRoutes);
 
 
 
+const PORT = process.env.PORT || 4000;
 
-
-
-
-
-
-app.listen(process.env.PORT, () => {
-    console.log(`server is running ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
+
